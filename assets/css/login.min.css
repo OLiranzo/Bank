@@ -48,7 +48,7 @@ h2 {
     background: #fff;
     padding: 30px;
     width: 90%;
-    max-width: 450px;
+    max-width: 420px;
     position: relative;
     padding: 0px;
     -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
@@ -59,7 +59,7 @@ h2 {
 #formFooter {
     background-color: #f6f6f6;
     border-top: 1px solid #dce8f1;
-    padding: 25px;
+    padding: 15px;
     text-align: center;
     -webkit-border-radius: 0 0 10px 10px;
     border-radius: 0 0 10px 10px;
@@ -86,7 +86,7 @@ input[type=button], input[type=submit], input[type=reset] {
     background-color: #56baed;
     border: none;
     color: white;
-    padding: 15px 80px;
+    padding: 15px 125px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -285,7 +285,7 @@ input[type=text], input[type=password] {
 }
 
 #icon {
-    width: 60%;
+    width: 45%;
 }
 
 * {

@@ -20,11 +20,15 @@ class Auth extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('auth/Index');
+		$data['view'] = 'auth/index';
+		$data['title'] = 'Login';
+		$this->load->view('auth/Index', $data);
 	}
 
 	public function Registro()
 	{
-		$this->load->view('auth/Registro');
+		$data['view'] = 'auth/registro';
+		$data['title'] = 'Registro';
+		$this->load->view('auth/Registro', $data);
 	}
 }

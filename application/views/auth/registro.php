@@ -4,7 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Registro</title>
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/Estilos.css') ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/login.min.css') ?>">
 
 </head>
 <body>
@@ -34,7 +34,7 @@
             </form>
 
             <div id="formFooter">
-                <a class="underlineHover" href="~/Login/Index">¿Ya tiene una cuenta?</a>
+                <a class="underlineHover" href="<?php echo base_url('Auth/Index') ?>">¿Ya tiene una cuenta?</a>
             </div>
         </div>
     </div>

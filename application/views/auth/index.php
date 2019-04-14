@@ -2,7 +2,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Login</title>
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/Estilos.css') ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/login.min.css') ?>">
 
 </head>
 <body>
@@ -18,18 +18,18 @@
             </div>
 
             <!-- Login Form -->
-            <form action="~/Home/Index" method="post">
-                <input type="text" id="Usuario" class="fadeIn second" name="login" placeholder="Usuario">
-                <input type="password" id="Contraseña" class="fadeIn third" name="login" placeholder="Contraseña">
+            <form action="~<?php echo base_url('Auth/') ?>" method="post">
+                <input type="text" id="Usuario" class="fadeIn second" name="login" placeholder="Usuario" autocomplete="off">
+                <input type="password" id="Contraseña" class="fadeIn third" name="login" placeholder="Contraseña" autocomplete="off">
                 <input type="submit" class="fadeIn fourth" value="Iniciar Sesion">
             </form>
 
             <!-- Remind Passowrd -->
             <div id="formFooter">
-                <a class="underlineHover" href="~/Home/Mantenimiento">¿Olvido su Contraseña?</a>
+                <a class="underlineHover" href="<?php echo base_url('Auth/Clave') ?>">¿Olvido su Contraseña?</a>
             </div>
             <div id="formFooter">
-                <a class="underlineHover" href="~/Registro/Index">¿Aun no se ha registrado?</a>
+                <a class="underlineHover" href="<?php echo base_url('Auth/Registro') ?>">¿Aun no se ha registrado?</a>
             </div>
         </div>
     </div>
