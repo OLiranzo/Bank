@@ -41,6 +41,7 @@ class Auth extends CI_Controller {
 	public function crear()
 	{
 		if ($_POST) {
+
 			$Cedula = $_POST['Cedula'];
 			$Contraseña = $_POST['Contraseña'];
 			$ConfirmarContraseña = $_POST['ConfirmarContraseña'];
@@ -50,7 +51,7 @@ class Auth extends CI_Controller {
 			echo $Cedula;
 			echo $Contraseña;
 			echo $ConfirmarContraseña;
-			echo $Fecha;
+			print_r($Fecha);
 			echo $Role;
 		}
 	}
