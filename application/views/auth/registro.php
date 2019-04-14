@@ -12,15 +12,15 @@
             </div>
 
             <!-- Login Form -->
-            <form method="post" action="<?php echo base_url('Auth/NuevoUsuario') ?>">
+            <form method="post" action="<?php echo base_url('Auth/crear') ?>">
               <div class="form-group">
-                <input type="text" class="form-control" id="Cedula" placeholder="Cedula">
+                <input type="text" class="form-control" name="Cedula" id="Cedula" placeholder="Cedula">
               </div>
               <div class="form-group">
-                <input type="password" class="form-control" id="Contraseña" placeholder="Contraseña">
+                <input type="password" class="form-control" name="Contraseña" id="Contraseña" placeholder="Contraseña">
               </div>
               <div class="form-group">
-                <input type="password" class="form-control" id="ConfirmarContraseña" placeholder="Confirmar Contraseña">
+                <input type="password" class="form-control" name="ConfirmarContraseña" id="ConfirmarContraseña" placeholder="Confirmar Contraseña">
               </div>
 
               <div class="form-group">

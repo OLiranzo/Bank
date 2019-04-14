@@ -31,21 +31,27 @@ class Auth extends CI_Controller {
 		$this->load->view('auth/Index', $data);
 	}
 
-	public function Registro()
+	public function registro()
 	{
 		$data['view'] = 'auth/registro';
 		$data['title'] = 'Registro';
 		$this->load->view('auth/registro', $data);
 	}
 
-	public function NuevoUsuario()
+	public function crear()
 	{
-		if ($this->input->post()) {
+		if ($_POST) {
+			$Cedula = $_POST['Cedula'];
+			$Contraseña = $_POST['Contraseña'];
+			$ConfirmarContraseña = $_POST['ConfirmarContraseña'];
+			$Fecha = getdate();
 			$Role = 1;
-	    	$Fecha = getdate();
-	    	$Cedula = $this->db->escape($Cedula);
-	    	$Contraseña = $this->db->escape($Contraseña);
-			$this->LoginModel->CrearUsuario();
+
+			echo $Cedula;
+			echo $Contraseña;
+			echo $ConfirmarContraseña;
+			echo $Fecha;
+			echo $Role;
 		}
 	}
 
