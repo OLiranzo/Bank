@@ -40,19 +40,34 @@ class Auth extends CI_Controller {
 
 	public function crear()
 	{
-		if ($_POST) {
+		if ($this->input->POST()) {
+			if ($_POST['Contraseña'] == $_POST['ConfirmarContraseña']) {
+				$datos = array(
+					'username' => $this->input->post('Cedula'), 
+					'password' => $this->input->post('Contraseña'), 
+					'date' => date('d/m/y H:i a'),
+					'role' => 1);
+				$this->LoginModel->crear($datos);
+			}else{
+				swal ( "Oops" ,  "Something went wrong!" ,  "error" );
+			}
+			
+		}
+	}
 
-			$Cedula = $_POST['Cedula'];
-			$Contraseña = $_POST['Contraseña'];
-			$ConfirmarContraseña = $_POST['ConfirmarContraseña'];
-			$Fecha = getdate();
-			$Role = 1;
+	public function verificar()
+	{
+		if ($this->input->POST()) {
+			$Usuario = $this->input->post('Cedula'); 
+			$Contraseña = $this->input->post('Contraseña');
+			$this->LoginModel->verificar($Usuario, $Contraseña);
+		}
+	}
 
-			echo $Cedula;
-			echo $Contraseña;
-			echo $ConfirmarContraseña;
-			print_r($Fecha);
-			echo $Role;
+	public function cambiar()
+	{
+		if ($this->input->POST()) {
+			
 		}
 	}
 

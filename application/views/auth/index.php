@@ -12,9 +12,9 @@
             </div>
 
             <!-- Login Form -->
-            <form action="<?php echo base_url('Auth/') ?>" method="post">
-                <input type="text" id="Usuario" class="fadeIn second" name="login" placeholder="Cedula" autocomplete="off">
-                <input type="password" id="Contraseña" class="fadeIn third" name="login" placeholder="Contraseña" autocomplete="off">
+            <form action="<?php echo base_url('Auth/verificar') ?>" method="post">
+                <input type="text" id="Cedula" class="fadeIn second" name="Cedula" placeholder="Cedula" autocomplete="off">
+                <input type="password" id="Contraseña" class="fadeIn third" name="Contraseña" placeholder="Contraseña" autocomplete="off">
                 <input type="submit" class="fadeIn fourth login" value="Iniciar Sesion">
             </form>
 

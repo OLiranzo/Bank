@@ -9,9 +9,19 @@ class LoginModel extends CI_Model {
         parent::__construct();
     }
 
-    public function CrearUsuario(String $Cedula, String $Contraseña){
+    public function crear($data){
     	
-    	return $this->db->query("Insert INTO User (username, password, role, date) values ({$Cedula}, {$Contraseña}, {$Role}, {$Fecha}");
+    	$this->db->insert('user', $data);
+    }
+
+    public function verificar($Usuario, $Contraseña){
+    	
+    	$this->db->get_where('user', array('username' => $Usuario, 'password' => $Contraseña));
+    }
+
+        public function cambiar($Usuario, $Contraseña){
+    	
+    	$this->db->update('user', $data);
     }
 
 }
