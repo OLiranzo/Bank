@@ -1,20 +1,10 @@
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Registro</title>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/login.min.css') ?>">
-
-</head>
-<body>
     
-
     <div class="wrapper fadeInDown">
         <div id="formContent">
             <!-- Tabs Titles -->
             <h2 class="inactive underlineHover"><a href="<?php echo base_url('Auth/Index') ?>">Iniciar sesion</a></h2>
-            <h2 class="active "><a href="<?php echo base_url('Auth/Registro') ?>">Registrarse</a></h2>
+            <h2 class="active "><a href="<?php echo base_url('Auth/registro') ?>">Registrarse</a></h2>
 
             <!-- Icon -->
             <div class="fadeIn first">
@@ -22,15 +12,22 @@
             </div>
 
             <!-- Login Form -->
-            <form>
-                
+            <form method="post" action="<?php echo base_url('Auth/NuevoUsuario') ?>">
+              <div class="form-group">
+                <input type="text" class="form-control" id="Cedula" placeholder="Cedula">
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control" id="Contraseña" placeholder="Contraseña">
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control" id="ConfirmarContraseña" placeholder="Confirmar Contraseña">
+              </div>
 
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" value="Crear" class="btn btn-primary" />
-                                <input type="reset" value="Limpiar" class="btn btn-warning" />
-                            </div>
-                        </div>
+              <div class="form-group">
+                  <div class="col-md-offset-2 col-md-10">
+                      <input class="registro" type="submit" value="Crear" class="btn btn-primary" />
+                  </div>
+              </div>                      
             </form>
 
             <div id="formFooter">
@@ -39,6 +36,3 @@
         </div>
     </div>
 
-
-</body>
-</html>

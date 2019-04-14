@@ -18,6 +18,12 @@ class Auth extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+	function __construct()
+	{
+		parent::__construct();
+		$this->load->model("LoginModel");
+	}
+
 	public function index()
 	{
 		$data['view'] = 'auth/index';
@@ -29,6 +35,18 @@ class Auth extends CI_Controller {
 	{
 		$data['view'] = 'auth/registro';
 		$data['title'] = 'Registro';
-		$this->load->view('auth/Registro', $data);
+		$this->load->view('auth/registro', $data);
 	}
+
+	public function NuevoUsuario()
+	{
+		if ($this->input->post()) {
+			$Role = 1;
+	    	$Fecha = getdate();
+	    	$Cedula = $this->db->escape($Cedula);
+	    	$Contraseña = $this->db->escape($Contraseña);
+			$this->LoginModel->CrearUsuario();
+		}
+	}
+
 }
