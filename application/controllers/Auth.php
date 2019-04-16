@@ -23,6 +23,7 @@ class Auth extends CI_Controller {
 		parent::__construct();
 		$this->load->model("LoginModel");
 		$this->load->library('encrypt');
+		$this->load->library('session');
 	}
 
 	public function index()
@@ -50,8 +51,11 @@ class Auth extends CI_Controller {
 					'date' => date('d/m/y H:i a'),
 					'role' => 1);
 				$this->LoginModel->crear($datos);
+				$this->session->set_flashdata('success', 'Usuario creado correctamente');
+				redirect('Auth/index');
 			}else{
-				swal ( "Oops" ,  "Something went wrong!" ,  "error" );
+				$this->session->set_flashdata('fail', 'Las contraseñas no coinciden');
+				redirect('Auth/index');
 			}
 			
 		}
