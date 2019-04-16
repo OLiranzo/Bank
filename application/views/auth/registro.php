@@ -36,3 +36,15 @@
         </div>
     </div>
 
+    <script src="<?php echo base_url('assets/js/jquery_3.4.0.min.js') ?>"></script>
+    <script src="<?php echo base_url('assets/js/sweetalert.min.js') ?>"></script>
+
+
+    <?php if ($this->session->flashdata('fail')): ?>
+        <?php
+        $msj = $this->session->flashdata('fail');
+        echo '<script type="text/javascript">';
+        echo "setTimeout(function () { swal('Error','$msj','error');";
+        echo '}, 1000);</script>';
+        ?>
+    <?php endif ?>

@@ -44,18 +44,25 @@ class Auth extends CI_Controller {
 	{
 		if ($this->input->POST()) {
 			if ($_POST['Contraseña'] == $_POST['ConfirmarContraseña']) {
-
-				$datos = array(
-					'username' => $this->input->post('Cedula'), 
+				$usuario = $this->input->post('Cedula');
+				
+				if ($this->LoginModel->verificacion($usuario) > 0) {
+					$this->session->set_flashdata('fail', 'Ya existe un usuario con este nombre.');
+					redirect('Auth/registro');
+				}else{
+					$datos = array(
+					'username' => $usuario, 
 					'password' => convert_uuencode($this->input->post('Contraseña')), 
 					'date' => date('d/m/y H:i a'),
 					'role' => 1);
-				$this->LoginModel->crear($datos);
-				$this->session->set_flashdata('success', 'Usuario creado correctamente');
-				redirect('Auth/index');
+					
+					$this->LoginModel->crear($datos);
+					$this->session->set_flashdata('success', 'Usuario creado correctamente');
+					redirect('Auth/index');
+				}
 			}else{
 				$this->session->set_flashdata('fail', 'Las contraseñas no coinciden');
-				redirect('Auth/index');
+				redirect('Auth/registro');
 			}
 			
 		}
@@ -66,7 +73,13 @@ class Auth extends CI_Controller {
 		if ($this->input->POST()) {
 			$Usuario = $this->input->post('Cedula'); 
 			$Contraseña = convert_uudecode($this->input->post('Contraseña'));
-			$this->LoginModel->verificar($Usuario, $Contraseña);
+			
+			if ($this->LoginModel->verificar($Usuario, $Contraseña) > 0) {
+				echo "Bienvenido";
+			}else{
+				echo "No existe.";
+			}
+			
 		}
 	}
 

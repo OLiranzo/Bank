@@ -35,7 +35,7 @@
         <?php
         $msj = $this->session->flashdata('success');
         echo '<script type="text/javascript">';
-        echo "setTimeout(function () { swal('Usuario registrada','$msj','success');";
+        echo "setTimeout(function () { swal('Usuario registrado','$msj','success');";
         echo '}, 1000);</script>';
         ?>
     <?php endif ?>
