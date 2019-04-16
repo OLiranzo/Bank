@@ -22,6 +22,7 @@ class Auth extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model("LoginModel");
+		$this->load->library('encrypt');
 	}
 
 	public function index()
@@ -42,9 +43,10 @@ class Auth extends CI_Controller {
 	{
 		if ($this->input->POST()) {
 			if ($_POST['Contraseña'] == $_POST['ConfirmarContraseña']) {
+
 				$datos = array(
 					'username' => $this->input->post('Cedula'), 
-					'password' => $this->input->post('Contraseña'), 
+					'password' => convert_uuencode($this->input->post('Contraseña')), 
 					'date' => date('d/m/y H:i a'),
 					'role' => 1);
 				$this->LoginModel->crear($datos);
@@ -59,7 +61,7 @@ class Auth extends CI_Controller {
 	{
 		if ($this->input->POST()) {
 			$Usuario = $this->input->post('Cedula'); 
-			$Contraseña = $this->input->post('Contraseña');
+			$Contraseña = convert_uudecode($this->input->post('Contraseña'));
 			$this->LoginModel->verificar($Usuario, $Contraseña);
 		}
 	}
