@@ -21,9 +21,7 @@
 
     <div class="wrapper fadeInDown">
         <div id="formContent">
-            <!-- Tabs Titles -->
-            <h2 class="active"><a href="<?php echo base_url('Auth/Index') ?>">Iniciar sesion</a></h2>
-            <h2 class="inactive underlineHover"><a href="<?php echo base_url('Auth/registro') ?>">Registrarse</a></h2>
+            <h2 class="active"><a href="<?php echo base_url('Auth/cambiarClave') ?>">Recupera tu cuenta</a></h2>
 
             <!-- Icon -->
             <div class="fadeIn first">
@@ -31,43 +29,36 @@
             </div>
 
             <!-- Login Form -->
-            <form action="<?php echo base_url('Auth/verificar') ?>" method="post">
-                <input type="text" id="Cedula" class="fadeIn second" name="Cedula" placeholder="Cedula" autocomplete="off" maxlength="13">
-                <input type="password" minlength="8" id="Clave" class="fadeIn third" name="Clave" placeholder="Contraseña" autocomplete="off">
-                <input type="submit" class="fadeIn fourth login" value="Iniciar Sesion">
+            <form method="post" action="<?php echo base_url('Auth/actualizarClave') ?>">
+              <div class="form-group">
+                <input type="text" maxlength="13" class="form-control" name="Cedula" id="Cedula" placeholder="Cedula"autocomplete="off">
+              </div>
+              <div class="form-group">
+                <input type="password" minlength="8" class="form-control" name="Clave" id="Clave" placeholder="Nueva Contraseña" autocomplete="off">
+              </div>
+              <div class="form-group">
+                <input type="password" minlength="8" class="form-control" name="ConfirmarClave" id="ConfirmarClave" placeholder="Confirmar Nueva Contraseña" autocomplete="off">
+              </div>
+
+              <div class="form-group">
+                  <div class="col-md-offset-2 col-md-10">
+                      <input class="registro" type="submit" value="Actualizar" class="btn btn-primary" />
+                  </div>
+              </div>                      
             </form>
 
-            <!-- Remind Passowrd -->
             <div id="formFooter">
-                <a class="underlineHover" href="<?php echo base_url('Auth/cambiarClave') ?>">¿Olvido su Clave?</a>
+                <a class="underlineHover" href="<?php echo base_url('Auth/Index') ?>">Volver al Login</a>
             </div>
             <div id="formFooter">
-                <a class="underlineHover" href="<?php echo base_url('Auth/Registro') ?>">¿Aun no se ha registrado?</a>
+                <a class="underlineHover" href="<?php echo base_url('Auth/Registro') ?>">Ir a Registro</a>
             </div>
         </div>
     </div>
 
     <script src="<?php echo base_url('assets/js/jquery_3.4.0.min.js') ?>"></script>
     <script src="<?php echo base_url('assets/js/sweetalert.min.js') ?>"></script>
-
-    <?php if ($this->session->flashdata('success')): ?>
-        <?php
-        $msj = $this->session->flashdata('success');
-        echo '<script type="text/javascript">';
-        echo "setTimeout(function () { swal('Usuario registrado','$msj','success');";
-        echo '}, 1000);</script>';
-        ?>
-    <?php endif ?>
-
-    <?php if ($this->session->flashdata('success2')): ?>
-        <?php
-        $msj = $this->session->flashdata('success2');
-        echo '<script type="text/javascript">';
-        echo "setTimeout(function () { swal('Excelente','$msj','success');";
-        echo '}, 1000);</script>';
-        ?>
-    <?php endif ?>
-
+    
     <?php if ($this->session->flashdata('fail')): ?>
         <?php
         $msj = $this->session->flashdata('fail');

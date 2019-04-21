@@ -40,10 +40,20 @@ class Auth extends CI_Controller {
 		$this->load->view('auth/registro', $data);
 	}
 
+	public function cambiarClave()
+	{
+		$data['view'] = 'auth/cambiarClave';
+		$data['title'] = 'Cambiar Clave';
+		$this->load->view('auth/cambiarClave', $data);
+	}
+
 	public function crear()
 	{
+		date_default_timezone_set('America/Santo_Domingo');
+		setlocale(LC_ALL,"es_ES");
+		$fecha=strftime( "%Y-%m-%d-%H-%M-%S", time() );
 		if ($this->input->POST()) {
-			if ($_POST['Contraseña'] == $_POST['ConfirmarContraseña']) {
+			if ($_POST['Clave'] == $_POST['ConfirmarClave']) {
 				$usuario = $this->input->post('Cedula');
 				
 				if ($this->LoginModel->verificacion($usuario) > 0) {
@@ -52,8 +62,8 @@ class Auth extends CI_Controller {
 				}else{
 					$datos = array(
 					'username' => $usuario, 
-					'password' => convert_uuencode($this->input->post('Contraseña')), 
-					'date' => date('d/m/y H:i a'),
+					'password' => convert_uuencode($this->input->post('Clave')), 
+					'date' => $fecha,
 					'role' => 1);
 					
 					$this->LoginModel->crear($datos);
@@ -61,7 +71,7 @@ class Auth extends CI_Controller {
 					redirect('Auth/index');
 				}
 			}else{
-				$this->session->set_flashdata('fail', 'Las contraseñas no coinciden');
+				$this->session->set_flashdata('fail', 'Las Claves no coinciden');
 				redirect('Auth/registro');
 			}
 			
@@ -72,21 +82,35 @@ class Auth extends CI_Controller {
 	{
 		if ($this->input->POST()) {
 			$Usuario = $this->input->post('Cedula'); 
-			$Contraseña = convert_uudecode($this->input->post('Contraseña'));
+			$Clave = convert_uuencode($this->input->post('Clave'));
 			
-			if ($this->LoginModel->verificar($Usuario, $Contraseña) > 0) {
-				echo "Bienvenido";
+			if ($this->LoginModel->verificar($Usuario, $Clave) > 0) {
+				$this->session->set_flashdata('success', 'Bienvenido');
+				//redirect('Auth/index');
 			}else{
-				echo "No existe.";
+				$this->session->set_flashdata('fail', 'Usuario o Clave incorrecto.');
+				redirect('Auth/index');
 			}
 			
 		}
 	}
 
-	public function cambiar()
+	public function actualizarClave()
 	{
 		if ($this->input->POST()) {
-			
+			if ($_POST['Clave'] == $_POST['ConfirmarClave']) {
+				$Usuario = $this->input->post('Cedula');
+				$Clave = convert_uuencode($this->input->post('Clave'));
+				
+				if ($this->LoginModel->verificacion($Usuario) > 0) {
+					$this->LoginModel->actualizarClave($Usuario, $Clave);
+					$this->session->set_flashdata('success2', 'Contraseña actualizada con exito.');
+					redirect('Auth/index');
+				}else{
+					$this->session->set_flashdata('fail', 'Usuario o Clave incorrecto.');
+					redirect('Auth/cambiarClave');
+				}
+			}
 		}
 	}
 

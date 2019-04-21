@@ -19,15 +19,17 @@ class LoginModel extends CI_Model {
     	return $datos->num_rows();
     }
 
-    public function verificar($Usuario, $Contraseña){
+    public function verificar($Usuario, $Clave){
     	
-    	$datos = $this->db->get_where('user', array('username' => $Usuario, 'password' => $Contraseña));
+    	$datos = $this->db->get_where('user', array('username' => $Usuario, 'password' => $Clave));
     	return $datos->num_rows();
     }
 
-    public function cambiar($Usuario, $Contraseña){
+    public function actualizarClave($Usuario, $Clave){
     	
-    	$this->db->update('user', $data);
+    	$this->db->set('password', $Clave);
+		$this->db->where('username', $Usuario);
+		$this->db->update('user');
     }
 
 }
