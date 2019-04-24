@@ -30,21 +30,24 @@ class Auth extends CI_Controller {
 	{
 		$data['view'] = 'auth/index';
 		$data['title'] = 'Login';
-		$this->load->view('auth/Index', $data);
+		$data['layout'] = false;
+		$this->load->view('clientes/template', $data);
 	}
 
 	public function registro()
 	{
 		$data['view'] = 'auth/registro';
 		$data['title'] = 'Registro';
-		$this->load->view('auth/registro', $data);
+		$data['layout'] = false;
+		$this->load->view('clientes/template', $data);
 	}
 
 	public function cambiarClave()
 	{
 		$data['view'] = 'auth/cambiarClave';
 		$data['title'] = 'Cambiar Clave';
-		$this->load->view('auth/cambiarClave', $data);
+		$data['layout'] = false;
+		$this->load->view('clientes/template', $data);
 	}
 
 	public function crear()
@@ -86,12 +89,11 @@ class Auth extends CI_Controller {
 			
 			if ($this->LoginModel->verificar($Usuario, $Clave) > 0) {
 				$this->session->set_flashdata('success', 'Bienvenido');
-				//redirect('Auth/index');
+				redirect('Auth/index');
 			}else{
 				$this->session->set_flashdata('fail', 'Usuario o Clave incorrecto.');
 				redirect('Auth/index');
 			}
-			
 		}
 	}
 
@@ -111,6 +113,13 @@ class Auth extends CI_Controller {
 					redirect('Auth/cambiarClave');
 				}
 			}
+		}
+	} 
+
+	public function validarCedula(){
+		if ($this->input->post()) {
+			$Usuario = $this->input->post('Cedula');
+			echo json_encode($this->LoginModel->verificacion($Usuario));
 		}
 	}
 

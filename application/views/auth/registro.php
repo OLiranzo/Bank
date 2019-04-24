@@ -1,24 +1,4 @@
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/login.min.css') ?>">
-    <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.min.js') ?>"></script>
-
-    <script type="text/javascript">
-        $(document).ready(Principal);
-            function Principal(){
-                var flag1 = true;
-                var flag2 = true;
-                $(document).on('keydown','[id=Cedula]',function(e){
-                    if($(this).val().length == 3 && flag1) {
-                        $(this).val($(this).val()+"-");
-                        flag1 = false;
-                    }
-                    if ($(this).val().length == 11 && flag2) {
-                        $(this).val($(this).val()+"-");
-                        flag2 = false;
-                    }
-                });
-            }
-    </script>
-
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/login.min.css'); ?>">
     <div class="wrapper fadeInDown">
         <div id="formContent">
             <!-- Tabs Titles -->
@@ -33,18 +13,19 @@
             <!-- Login Form -->
             <form method="post" action="<?php echo base_url('Auth/crear') ?>">
               <div class="form-group">
-                <input type="text" maxlength="13" class="form-control" name="Cedula" id="Cedula" placeholder="Cedula" autocomplete="off">
+                <input type="text" maxlength="13" class="form-control" name="Cedula" id="Cedula" placeholder="Cedula" autocomplete="off" required><br>
+                <span style="font-size: 1ex;" id="mensaje"></span>
               </div>
               <div class="form-group">
-                <input type="password" minlength="8" class="form-control" name="Clave" id="Clave" placeholder="Contraseña" autocomplete="off">
+                <input type="password" minlength="8" class="form-control" name="Clave" id="Clave" placeholder="Contraseña" autocomplete="off" required>
               </div>
               <div class="form-group">
-                <input type="password" minlength="8" class="form-control" name="ConfirmarClave" id="ConfirmarClave" placeholder="Confirmar Contraseña" autocomplete="off">
+                <input type="password" minlength="8" class="form-control" name="ConfirmarClave" id="ConfirmarClave" placeholder="Confirmar Contraseña" autocomplete="off" required>
               </div>
 
               <div class="form-group">
                   <div class="col-md-offset-2 col-md-10">
-                      <input class="registro" type="submit" value="Crear" class="btn btn-primary" />
+                      <input id="btnDatos" type="submit" value="Crear" class="btn btn-primary botones registro" />
                   </div>
               </div>                      
             </form>
@@ -54,10 +35,6 @@
             </div>
         </div>
     </div>
-
-    <script src="<?php echo base_url('assets/js/jquery_3.4.0.min.js') ?>"></script>
-    <script src="<?php echo base_url('assets/js/sweetalert.min.js') ?>"></script>
-
 
     <?php if ($this->session->flashdata('fail')): ?>
         <?php

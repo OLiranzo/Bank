@@ -1,23 +1,4 @@
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/login.min.css') ?>">
-    <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.min.js') ?>"></script>
-
-    <script type="text/javascript">
-        $(document).ready(Principal);
-            function Principal(){
-                var flag1 = true;
-                var flag2 = true;
-                $(document).on('keydown','[id=Cedula]',function(e){
-                    if($(this).val().length == 3 && flag1) {
-                        $(this).val($(this).val()+"-");
-                        flag1 = false;
-                    }
-                    if ($(this).val().length == 11 && flag2) {
-                        $(this).val($(this).val()+"-");
-                        flag2 = false;
-                    }
-                });
-            }
-    </script>
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/login.min.css'); ?>">
 
     <div class="wrapper fadeInDown">
         <div id="formContent">
@@ -32,9 +13,9 @@
 
             <!-- Login Form -->
             <form action="<?php echo base_url('Auth/verificar') ?>" method="post">
-                <input type="text" id="Cedula" class="fadeIn second" name="Cedula" placeholder="Cedula" autocomplete="off" maxlength="13">
-                <input type="password" minlength="8" id="Clave" class="fadeIn third" name="Clave" placeholder="Contraseña" autocomplete="off">
-                <input type="submit" class="fadeIn fourth login" value="Iniciar Sesion">
+                <input type="text" id="Cedula" class="fadeIn second" name="Cedula" placeholder="Cedula" autocomplete="off" maxlength="13" required>
+                <input type="password" minlength="8" id="Clave" class="fadeIn third" name="Clave" placeholder="Contraseña" autocomplete="off" required>
+                <input type="submit" class="fadeIn fourth botones login" value="Iniciar Sesion">
             </form>
 
             <!-- Remind Passowrd -->
@@ -46,9 +27,6 @@
             </div>
         </div>
     </div>
-
-    <script src="<?php echo base_url('assets/js/jquery_3.4.0.min.js') ?>"></script>
-    <script src="<?php echo base_url('assets/js/sweetalert.min.js') ?>"></script>
 
     <?php if ($this->session->flashdata('success')): ?>
         <?php
